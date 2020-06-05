@@ -43,3 +43,36 @@ a:hover {
   transition: 0.2s;
   text-decoration: underline;
 }
+
+
+.main-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-screen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.main-screen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-screen h1 {
+  color: #fff;
+  text-align: center;
+  margin:0px;
+}
+
+.main-screen h5 {
+  color: #fff;
+  text-align: center;
+  margin:0px;
+}
