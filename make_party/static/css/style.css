@@ -1,0 +1,45 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  background: url(../img/bg.jpg) no-repeat;
+  background-size: cover;
+  margin:0px;
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.7rem;
+}
+h3 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #0089FF;
+  transition: 0.2s;
+
+}
+
+a:hover {
+  color: #D21071;
+  transition: 0.2s;
+  text-decoration: underline;
+}
