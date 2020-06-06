@@ -1,40 +1,3 @@
-#!/usr/bin/python
-
-# Copyright (c) 2015 Matthew Earl
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-#     The above copyright notice and this permission notice shall be included
-#     in all copies or substantial portions of the Software.
-#
-#     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-#     OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-#     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-#     NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-#     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-#     OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-#     USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-"""
-This is the code behind the Switching Eds blog post:
-    http://matthewearl.github.io/2015/07/28/switching-eds-with-python/
-See the above for an explanation of the code below.
-To run the script you'll need to install dlib (http://dlib.net) including its
-Python bindings, and OpenCV. You'll also need to obtain the trained model from
-sourceforge:
-    http://sourceforge.net/projects/dclib/files/dlib/v18.10/shape_predictor_68_face_landmarks.dat.bz2
-Unzip with `bunzip2` and change `PREDICTOR_PATH` to refer to this file. The
-script is run like so:
-    ./faceswap.py <head image> <face image>
-If successful, a file `output.jpg` will be produced with the facial features
-from `<head image>` replaced with the facial features from `<face image>`.
-"""
-
 import cv2
 import dlib
 import numpy
@@ -58,19 +21,15 @@ def core(head,face):
     NOSE_POINTS = list(range(27, 35))
     JAW_POINTS = list(range(0, 17))
 
-    # Points used to line up the images.
+
     ALIGN_POINTS = (LEFT_BROW_POINTS + RIGHT_EYE_POINTS + LEFT_EYE_POINTS +
                                    RIGHT_BROW_POINTS + NOSE_POINTS + MOUTH_POINTS)
 
-    # Points from the second image to overlay on the first. The convex hull of each
-    # element will be overlaid.
     OVERLAY_POINTS = [
         LEFT_EYE_POINTS + RIGHT_EYE_POINTS + LEFT_BROW_POINTS + RIGHT_BROW_POINTS,
         NOSE_POINTS + MOUTH_POINTS,
     ]
 
-    # Amount of blur to use during colour correction, as a fraction of the
-    # pupillary distance.
     COLOUR_CORRECT_BLUR_FRAC = 0.6
 
     detector = dlib.get_frontal_face_detector()
@@ -128,10 +87,7 @@ def core(head,face):
             sum ||s*R*p1,i + T - p2,i||^2
         is minimized.
         """
-        # Solve the procrustes problem by subtracting centroids, scaling by the
-        # standard deviation, and then using the SVD to calculate the rotation. See
-        # the following for more details:
-        #   https://en.wikipedia.org/wiki/Orthogonal_Procrustes_problem
+
 
         points1 = points1.astype(numpy.float64)
         points2 = points2.astype(numpy.float64)
@@ -148,10 +104,6 @@ def core(head,face):
 
         U, S, Vt = numpy.linalg.svd(points1.T * points2)
 
-        # The R we seek is in fact the transpose of the one given by U * Vt. This
-        # is because the above formulation assumes the matrix goes on the right
-        # (with row vectors) where as our solution requires the matrix to be on the
-        # left (with column vectors).
         R = (U * Vt).T
 
         return numpy.vstack([numpy.hstack(((s2 / s1) * R,
