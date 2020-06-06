@@ -58,19 +58,9 @@ a:hover {
 
 }
 
-section {
-  width: 100%;
 
-}
 
-.last-screen {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-}
 
 .main-title {
   padding-top: 30px;
