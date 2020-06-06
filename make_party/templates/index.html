@@ -47,10 +47,11 @@
       <div class="upload-screen-info-block">
         <div class="upload-screen-mockup-border">
           {% load static %}
-          <img src="{% static 'img/photo.jpg' %}">
+          <img id ='photo_img' src="{% static 'img/photo.jpg' %}">
         </div>
         <div class="upload-screen-list-block">
           <ul>
+            {% csrf_token %}
             <li>1. Добавь фото</li>
             <li><input type="file" name="upload-photo" id='photo' class="upload-photo"></li>
             <li>2. Получи видео</li>
