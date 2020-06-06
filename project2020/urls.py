@@ -12,4 +12,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.ico', permanent=True)),
     path('',RedirectView.as_view(url='/make_party/', permanent=True)),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

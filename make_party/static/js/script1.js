@@ -39,6 +39,9 @@ function(ev){
             }
           else{
             console.log(req.responseText);
+            let photo_img = document.querySelector('#photo_img');
+            let json = JSON.parse(req.responseText);
+            photo_img.src = '/'+json.url;
             return false;
           }
       }
