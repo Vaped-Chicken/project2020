@@ -295,6 +295,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050",endCo
 
 .upload-screen-list-block ul li {
   list-style: none;
+  padding-bottom: 5px;
   color: #fff;
 }
 
