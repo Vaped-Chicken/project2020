@@ -12,7 +12,8 @@
 <div class="main-wrap">
   <div class="main-screen">
   </div>
-  <input type="file" name="upload-photo">
+  {% csrf_token %}
+  <input type="file" id='photo' name="upload-photo">
   <input type="submit" id="submiter" name="go" value="Нарезать">
 </div>
 {% endblock %}
