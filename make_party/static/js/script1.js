@@ -38,7 +38,7 @@ function(ev){
           if (req.status !=200){
             }
           else{
-            console.log(req.responseText());
+            console.log(req.responseText);
             return false;
           }
       }

@@ -10,15 +10,7 @@
 
 
 {% block content %}
-<script>
-  $(".main").onepage_scroll({
-    sectionContainer: "div", // контейнер, к которому будет применяться скролл
-    easing: "ease", // Тип анимации "ease", "linear", "ease-in", "ease-out", "ease-in-out"
-    animationTime: 3000, // время анимации
-    pagination: true, // скрыть или отобразить пагинатор
-    updateURL: false // обновлять URL или нет
-  });
-</script>
+
 <div class="main">
 <div class="main-wrap">
 
@@ -61,6 +53,7 @@
         </div>
         <div class="upload-screen-list-block">
           <ul>
+            {% csrf_token %}
             <li>1. Добавь фото</li>
             <li><input type="file" name="upload-photo" id='photo' class="upload-photo"></li>
             <li>2. Получи видео</li>

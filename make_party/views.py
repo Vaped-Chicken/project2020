@@ -14,7 +14,11 @@ def index(request):
 
 def change_photo(request):
 
-    print(request.POST)
+    files = request.FILES
+    print(files)
+
+    photo = (files['image'])
+    print('photo - ',photo)
 
 
     return HttpResponse('chto-to')
