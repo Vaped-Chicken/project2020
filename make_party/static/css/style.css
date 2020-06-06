@@ -82,6 +82,7 @@ a:hover {
   margin:0px;
   font-weight: 600;
   font-size: 0.9rem;
+  padding: 10px;
 }
 
 @keyframes fade-in-top {
