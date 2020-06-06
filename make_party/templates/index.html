@@ -3,76 +3,83 @@
 {% block title %}
 <title>Потрачено | чуть было не было</title>
 <meta name="Description" content=" index ">
+
 {% endblock %}
 
 
 
 
 {% block content %}
+<div id="fullpage">
 <div class="main-wrap">
- <section class="scroll">
-  <div class="main-screen">
-    <div class="main-title">
-      <h1>ПОТРАЧЕНО</h1>
-      <h5>чуть было не было</h5>
-    </div>
-    <div class="main-message">
-      <div class="main-message-info">
-        <span>EORA</span> <span>сейчас</span>
+
+  <section class="section">
+    <div class="container">
+
+
+    <div class="main-screen">
+      <div class="main-title">
+        <h1>ПОТРАЧЕНО</h1>
+        <h5>чуть было не было</h5>
       </div>
-      <p>Думаешь, выпускного 2020 не было?<br>Ты просто всё забыл...</p>
-    </div>
-    <div class="main-swipe">
-      <div class="arrow">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="main-message">
+        <div class="main-message-info">
+          <span>EORA</span> <span>сейчас</span>
+        </div>
+        <p>Думаешь, выпускного 2020 не было?<br>Ты просто забыл...</p>
       </div>
-      <h3>Вспомнить всё</h3>
+      <div class="main-swipe">
+        <div class="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h3>Вспомнить всё</h3>
+      </div>
     </div>
-  </div>
+    </div>
   </section>
-  <section class="scroll">
-  <div class="upload-screen">
-    <div class="main-title">
-      <h5>Загрузи фото с лицами корешей и узнай,<br> что было с вами на тусе, ну или не было</h5>
-    </div>
-    <div class="upload-screen-info-block">
-      <div class="upload-screen-mockup-border">
-        {% load static %}
-        <img src="{% static 'img/photo.jpg' %}">
+  <section class="section">
+    <div class="container">
+    <div class="upload-screen">
+      <div class="main-title">
+        <h5>Загрузи фото с лицами корешей и узнай,<br> что было с вами на тусе, ну или не было</h5>
       </div>
-      <div class="upload-screen-list-block">
-        <ul>
-          <li>1. Добавь фото</li>
-          <li><input type="file" name="upload-photo" class="upload-photo"></li>
-          <li>2. Получи видео</li>
-          <li><input type="submit" id="submiter" name="go" value="Отправить" class="button-go"></li>
-          <li>3. Поделись в соцсетях и получи орные стикеры с вашими лицами</li>
-        </ul>
+      <div class="upload-screen-info-block">
+        <div class="upload-screen-mockup-border">
+          {% load static %}
+          <img src="{% static 'img/photo.jpg' %}">
+        </div>
+        <div class="upload-screen-list-block">
+          <ul>
+            <li>1. Добавь фото</li>
+            <li><input type="file" name="upload-photo" class="upload-photo"></li>
+            <li>2. Получи видео</li>
+            <li><input type="submit" id="submiter" name="go" value="Отправить" class="button-go"></li>
+            <li>3. Поделись в соцсетях и получи орные стикеры с вашими лицами</li>
+          </ul>
+
+        </div>
 
       </div>
-
-    </div>
-    <div class="upload-screen-swipe">
-      <div class="arrow">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="upload-screen-swipe" id="third">
+        <div class="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h3>Получить стикеры</h3>
       </div>
-      <h3>Получить стикеры</h3>
     </div>
-  </div>
+    </div>
   </section>
-  <section class="scroll">
-  <div class="last-screen">
-  </div>
+  <section class="section">
+    <div class="container">
+    <div class="last-screen">
+    </div>
+    </div>
   </section>
 
 </div>
-<script type="text/javascript">
-  $.scrollify({
-		section : ".scroll"
-	});
-</script>
+</div>
 {% endblock %}
