@@ -47,7 +47,7 @@
       <div class="upload-screen-info-block">
         <div class="upload-screen-mockup-border">
           {% load static %}
-          <img id ='photo_img' src="{% static 'img/photo.jpg' %}">
+          <img src="{% static 'img/photo.jpg' %}">
         </div>
         <div class="upload-screen-list-block">
           <ul>
@@ -60,11 +60,12 @@
           </ul>
 
         </div>
-<<<<<<< HEAD
-        <div class="photo-frame"></div>
-=======
-        
->>>>>>> 2b4d46bac46f81cc7fcc799b6f8ece8153160696
+
+
+
+      </div>
+      <div class="photo-frame">
+        <img id ='photo_img' src ="{% static 'img/110.gif' %}">
       </div>
       <div class="upload-screen-swipe" id="third">
         <div class="arrow">
@@ -83,11 +84,14 @@
 
       </div>
       <input type="submit"  value="Забрать" class="button-sticker">
+      <div class="disclaimer">
+        <p>После нажатия на кнопку, созданые стикеры будут доступны в течении часа. <a href="#">Ссылка на стикеры</a></p>
+      </div>
     </div>
-
+    
 
 
 </div>
-
+<script src="{% static 'js/script1.js' %}"></script>
 
 {% endblock %}

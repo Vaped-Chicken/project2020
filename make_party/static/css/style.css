@@ -340,9 +340,36 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050",endCo
   font-size: 1.2rem;
 }
 
+.button-sticker:hover {
+  background: #999;
+}
+
 .photo-frame {
-  display: block;
-  width: 300px;
-  height: 250px;
+  display: none;
+
+  margin: 0 auto;
+  width: 200px;
+  height: 300px;
+  border-radius: 7px;
   border: 3px solid #fff;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+}
+
+.disclaimer {
+  width: 90%;
+  color: #fff;
+}
+
+.disclaimer p {
+  text-align: center;
+
+}
+
+.disclaimer p a {
+  background: #fff;
+  border-radius: 5px;
 }
