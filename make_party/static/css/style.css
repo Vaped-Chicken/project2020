@@ -339,3 +339,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050",endCo
   color: #333;
   font-size: 1.2rem;
 }
+
+.photo-frame {
+  display: block;
+  width: 300px;
+  height: 250px;
+  border: 3px solid #fff;
+}
