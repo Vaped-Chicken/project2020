@@ -87,7 +87,7 @@ a:hover {
 
 @keyframes fade-in-top {
     0% {
-        margin-top: -30px;
+        margin-top: -50px;
         opacity: 0;
     }
     100% {
@@ -107,7 +107,7 @@ a:hover {
 
 .main-message {
   position: absolute;
-  animation: fade-in-top 0.8s ease;
+  animation: fade-in-top 1.2s ease;
   width: 85%;
   padding: 10px 15px 5px 15px;
   border-radius: 12px;
