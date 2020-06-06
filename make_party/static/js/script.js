@@ -26,7 +26,8 @@ function(ev){
     };
 
   var form_data = new FormData();
-  form_data.append("model" , "face-blurring");
+  // form_data.append("model" , "face-blurring");
+  form_data.append("model" , "animal-gan");
   form_data.append("image" , file, 'kek.jpg');
   let url = 'https://www.visionhub.ru/api/v2/process/img2img/';
 
