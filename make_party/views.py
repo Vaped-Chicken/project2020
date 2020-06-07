@@ -144,7 +144,7 @@ def create_stickerpack(request):
         final_list_of_img.append('/home/user/project/project2020' + index.changed_photo.url)
     print(final_list_of_img)
     stickerpack = {
-        'name' : skiterbot.stikers_maker(userid,final_list_of_img),
+        'name' : skiterbot.stikers_maker(userid,final_list_of_img,token),
     }
     stickerpack = json.dumps(stickerpack,sort_keys = True, indent = 4)
 

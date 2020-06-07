@@ -76,14 +76,15 @@ def tg_add_stiekr_to_pack(user_id,name,emoj,stiker_name):
     response = requests.post(url, files=up, data=payload)
     print(response.text)
 
-def stikers_maker(user_id,list_of_img):
+def stikers_maker(user_id,list_of_img,token):
     number_of_sticker = len(list_of_img)
     print(sticker_set_name)
     tg_create_pack(user_id,sticker_set_name)
     for stiker in range(0,number_of_sticker-1):
         resize_image(input_image_path=list_of_img[stiker],
-                     output_image_path='/home/user/project/project2020/make_party/cpored/'+str(stiker)+'.png',
+                     output_image_path='/home/user/project/project2020/make_party/cpored/'+str(stiker)+str(token)+'.png',
                      size=(512, 512))
-        tg_add_stiekr_to_pack(user_id,sticker_set_name,emojis[stiker],list_of_img[stiker])
+        sticker_name_png ='/home/user/project/project2020/make_party/cpored/'+str(stiker)+str(token)+'.png'
+        tg_add_stiekr_to_pack(user_id,sticker_set_name,emojis[stiker],sticker_name_png)
     send_message(user_id)
     return sticker_set_name
