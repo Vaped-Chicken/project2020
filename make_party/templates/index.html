@@ -15,8 +15,6 @@
 <div class="main-wrap">
 
 
-
-
     <div class="main-screen">
       <div class="main-title">
         <h1>ПОТРАЧЕНО</h1>
@@ -76,19 +74,28 @@
         <h3>Получить стикеры</h3>
       </div>
     </div>
+<a class="button-add-pacient" href="#stickerModal">Добавить койку</a>
+    <div id="stickerModal" class="modalDialog">
+      <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
 
+        <p>Чтобы получить стикеры, введите Ваш UserID</p>
+        <a class="button-sticker-tel" target="_blank" href="https://t.me/my_id_bot" >Узнать UserID</a>
+        <input type="text" name="userid" id="userid" placeholder="Telegram UserID">
+        <input type="submit" id="send-userid" name="go" value="Отправить" class=".button-sticker">
+
+      </div>
+    </div>
 
 
     <div class="last-screen">
       <div class="sticker-example">
 
       </div>
-      <input type="submit"  value="Забрать" class="button-sticker">
-      <div class="disclaimer">
-        <p>После нажатия на кнопку, созданые стикеры будут доступны в течении часа. <a href="#">Ссылка на стикеры</a></p>
-      </div>
+      <input type="submit"  value="Забрать стикеры" class="button-sticker">
+      
     </div>
-    
+
 
 
 </div>

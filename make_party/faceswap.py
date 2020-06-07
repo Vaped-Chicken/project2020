@@ -160,5 +160,5 @@ def core(head,face):
 
     output_im = im1 * (1.0 - combined_mask) + warped_corrected_im2 * combined_mask
 
-    cv2.imwrite('/home/user/project/project2020/make_party/static/img/outputs/output.jpg', output_im)
+    cv2.imwrite('/home/user/project/project2020/media/output.jpg', output_im)
     return output_im
