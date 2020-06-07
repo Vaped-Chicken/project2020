@@ -14,6 +14,8 @@ from django.core.files import File
 from django.core.files.base import ContentFile
 from . import skiterbot
 import random
+from . import gifEditor
+
 
 api_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXlsb2FkIjoiMDcwODQ1MjgtOWFkNy00NjViLWJjZGMtNmYxODZjMTQyZDYxIn0.XEivKJamIn8RH7-bWNdsSHGKMsnVYHVTS-jmPn4m1XM'
 
@@ -54,31 +56,33 @@ def change_photo(request):
     # print(list_of_img)
     # head = '/home/user/project/project2020/make_party/static/img/heads/'+list_of_img[random.randint(0,len(list_of_img)-1)]
 
-
     array_photo =[]
     print('start array_photo',array_photo)
     a=0
     for index in list_of_img:
         # print(a)
-        head = '/home/user/project/project2020/make_party/static/img/heads/'+index
-        # print('head_path',head)
-        root = os.path.join(settings.MEDIA_ROOT,obj.photo.name)
-        # print('root_path',root)
-        final = faceswap.core(head,root)
+        try:
+            head = '/home/user/project/project2020/make_party/static/img/heads/'+index
+            # print('head_path',head)
+            root = os.path.join(settings.MEDIA_ROOT,obj.photo.name)
+            # print('root_path',root)
+            final = faceswap.core(head,root)
 
-        # ch_file = str(open('/home/user/project/project2020/media/output.jpg','rb').read()).replace('data:image/jpeg;base64,','')
-        # decodedPhoto = base64.urlsafe_b64decode(ch_file)
-        # print(decodedPhoto)
-        chPhoto = open('/home/user/project/project2020/media/output.jpg','rb')
-        # print(chPhoto.name)
-        photo_name = 'final'+obj.photo.name.replace('tmp1/','').replace('.jpg','')+str(a)+'.jpg'
-        final_ch_file = File(chPhoto,name = photo_name)
-        print('final',final_ch_file)
-        Changed_photo.objects.create(identificator=token,
-                                     changed_photo=final_ch_file)
-        a=a+1
-        array_photo.append('/home/user/project/project2020/media/tmp/'+photo_name)
-        print('array_photo',array_photo)
+            # ch_file = str(open('/home/user/project/project2020/media/output.jpg','rb').read()).replace('data:image/jpeg;base64,','')
+            # decodedPhoto = base64.urlsafe_b64decode(ch_file)
+            # print(decodedPhoto)
+            chPhoto = open('/home/user/project/project2020/media/output.jpg','rb')
+            # print(chPhoto.name)
+            photo_name = 'final'+obj.photo.name.replace('tmp1/','').replace('.jpg','')+str(a)+'.jpg'
+            final_ch_file = File(chPhoto,name = photo_name)
+            print('final',final_ch_file)
+            Changed_photo.objects.create(identificator=token,
+                                         changed_photo=final_ch_file)
+            a=a+1
+            array_photo.append('/home/user/project/project2020/media/tmp/'+photo_name)
+        except:
+            print('xhto-to neto')
+            # print('array_photo',array_photo)
         # print(a)
     # file = request.FILES['image']
     # print(file.read())
@@ -106,9 +110,22 @@ def change_photo(request):
     # # jpeg = open('/home/user/project/project2020/make_party/static/img/outputs/output.jpg','r')
     # # print(jpeg)
 
-    print(array_photo)
+
+    list = Changed_photo.objects.filter(identificator=token)
+    list = list.reverse()[:10]
+    final_list_of_img = []
+
+    for index in list:
+        final_list_of_img.append('/home/user/project/project2020' + index.changed_photo.url)
+
+    print(final_list_of_img)
+    print(type(final_list_of_img))
+
+    # gifEditor(array_photo,token)
+
+
     count_list = {
-        'url' : 'static/img/outputs/output.jpg',
+        'url' : gifEditor.editorCore(array_photo,token),
     }
     count_list = json.dumps(count_list,sort_keys = True, indent = 4)
 
@@ -120,15 +137,16 @@ def create_stickerpack(request):
     token = request.POST['csrf']
     userid = request.POST['userid']
     list = Changed_photo.objects.filter(identificator=token)
+    list = list.reverse()[:10]
     final_list_of_img = []
-    for index in list:
-        print(index.changed_photo.path)
-        final_list_of_img.append(index.changed_photo)
-    # print(final_list_of_img)
-    # stickerpack = {
-    #     'name' : skiterbot.stikers_maker(userid)#,final_list_of_img),
-    # }
-    # stickerpack = json.dumps(stickerpack,sort_keys = True, indent = 4)
 
-    return HttpResponse('xhtoto')
-    # return HttpResponse(stickerpack)
+    for index in list:
+        final_list_of_img.append('/home/user/project/project2020' + index.changed_photo.url)
+    print(final_list_of_img)
+    stickerpack = {
+        'name' : skiterbot.stikers_maker(userid,final_list_of_img),
+    }
+    stickerpack = json.dumps(stickerpack,sort_keys = True, indent = 4)
+
+    # return HttpResponse('xhtoto')
+    return HttpResponse(stickerpack)

@@ -132,9 +132,9 @@ sticker_button.addEventListener('click',
             }
           else{
             let json = JSON.parse(req.responseText);
-            console.log(req.responseText);
+            console.log('выполнился',req.responseText);
 
-            disclaimer.style = 'display:inherit';
+            // disclaimer.style = 'display:inherit';
             sticker_name.innerHTML = 'Название: ' + json.name;
             return false;
           }

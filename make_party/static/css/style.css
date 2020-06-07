@@ -419,7 +419,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050",endCo
     background: #fff;
     display: flex;
     flex-direction: column;
-    height: 40vh;
+    height: 50vh;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -454,4 +454,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#505050",endCo
 .modalDialog input {
   padding: 7px;
   margin-bottom: 15px;
+}
+.modalDialog a {
+  margin-bottom: 15px;
+  font-size: 1rem;
 }
